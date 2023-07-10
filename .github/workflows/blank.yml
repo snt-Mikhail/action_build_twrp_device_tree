@@ -26,9 +26,11 @@ jobs:
         sudo apt -y install python3 python3-pip cpio wget
         pip3 install twrpdtgen
         mkdir dt
+        mkdir boot
       
     - name: Download boot or recovery img
       run: |
+        cd boot
         aria2c "${{ github.event.inputs.IMG_URL }}"
         ls
       
