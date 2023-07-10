@@ -8,6 +8,9 @@ on:
         required: true
         default: ''
 
+permissions:
+  contents: write
+
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
@@ -31,7 +34,7 @@ jobs:
       
     - name: Start build
       run: |
-        python3 -m twrpdtgen -o dt/ boot.1.img
+        python3 -m twrpdtgen -o dt/ *.img
     - name: ZIP device tree
       run: |
         zip -r DeviceTree.zip ./dt
